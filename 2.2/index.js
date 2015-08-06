@@ -5,7 +5,7 @@ function onReady() {
 
     var adambiroEu = eu.adambiro;//eu&adambiro are two calls
     //to save it in one var we save 6 calls this is massive save in a loop
-    var clock  = new adambiroEu.AlarmClock('clock');
+    var clock = new adambiroEu.AlarmClock('clock');
     var clock2 = new adambiroEu.TextClock('clock2', -7200000, 'ETC');
     var clock3 = new adambiroEu.Clock('clock3', -7200000, 'ETC');
     var d = new Date();
@@ -36,13 +36,20 @@ Date.addToInterval = function (date) {
     }
 };
 
+/**
+ * Update dates
+ */
 Date.updateDates = function () {
-    for (var i = 0; i < this.__aDates.length; i++) {
-        if (this.__aDates[i] instanceof Date) {
-            this.__aDates[i].updateSeconds();
+    var aDates = this.__aDates;
+    var dateObj; // Date Object or Function
+    //improve performance
+    for (var i = 0; i < aDates.length; i++) {
+        dateObj = aDates[i];
+        if (dateObj instanceof Date) {
+            dateObj.updateSeconds();
         } else {
-            if (this.__aDates[i] instanceof Function) {
-                this.__aDates[i]();
+            if (dateObj instanceof Function) {
+                dateObj();
             }
         }
     }
@@ -121,7 +128,8 @@ eu.adambiro.Clock.prototype.updateClock = function () {
             date.getSeconds(),
             this.label
         );
-    };
+    }
+    ;
 };
 
 /**
