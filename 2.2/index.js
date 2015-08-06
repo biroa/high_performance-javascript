@@ -203,30 +203,31 @@ eu.adambiro.TextClock.prototype.formatOutput = function (h, m, s, label) {
 eu.adambiro.AlarmClock = function (id, offset, label) {
     eu.adambiro.Clock.apply(this, arguments);
 
-    this.dom = document.getElementById(id);
-    this.dom.contentEditable = true;
+    //local reference to dom object
+    var dom = this.dom = document.getElementById(id);
+    dom.contentEditable = true;
     var that = this;
 
-    this.dom.addEventListener('focus', function () {
+    dom.addEventListener('focus', function () {
         this.innerHTML = this.innerHTML.slice(0, this.innerHTML.lastIndexOf(':'));
         console.log(this.innerHTML);
         that.tick(false);
     });
 
-    this.dom.addEventListener('blur', function () {
+    dom.addEventListener('blur', function () {
         var a = this.innerHTML.split(':');
-        that.almHour = parseInt(a[0]);
-        that.almMinutes = parseInt(a[1]);
-        console.log('logged', that.almHour, that.almMinutes);
-        if ((that.almHour >= 0 && that.almHour < 24) &&
-            (that.almMinutes >= 0 && that.almMinutes < 60)) {
+        var almHour = that.almHour = parseInt(a[0]);
+        var almMinutes = that.almMinutes = parseInt(a[1]);
+        console.log('logged', almHour, almMinutes);
+        if ((almHour >= 0 && almHour < 24) &&
+            (almMinutes >= 0 && almMinutes < 60)) {
             var event = new Event('restart_tick');
             this.dispatchEvent(event);//dispatch event
         }
         that.tick(true);
     });
 
-    this.dom.addEventListener('restart_tick', function () {
+    dom.addEventListener('restart_tick', function () {
         that.tick(true);
     })
 };
