@@ -1,5 +1,5 @@
-//version 5.6
-// cleaned version
+// High Performance Javascript
+// version 2.2
 
 function onReady() {
 
