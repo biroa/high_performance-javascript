@@ -3,9 +3,11 @@
 
 function onReady() {
 
-    var clock = new eu.adambiro.AlarmClock('clock');
-    var clock2 = new eu.adambiro.TextClock('clock2', -7200000, 'ETC');
-    var clock3 = new eu.adambiro.Clock('clock3', -7200000, 'ETC');
+    var adambiroEu = eu.adambiro;//eu&adambiro are two calls
+    //to save it in one var we save 6 calls this is massive save in a loop
+    var clock  = new adambiroEu.AlarmClock('clock');
+    var clock2 = new adambiroEu.TextClock('clock2', -7200000, 'ETC');
+    var clock3 = new adambiroEu.Clock('clock3', -7200000, 'ETC');
     var d = new Date();
 }
 
