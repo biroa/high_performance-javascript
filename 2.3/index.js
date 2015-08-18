@@ -1,14 +1,15 @@
 // High Performance Javascript
-// version 2.3
+// version 2.3 condensing Variables make our code
+// little faster
 
 function onReady() {
 
-    var adambiroEu = eu.adambiro;//eu&adambiro are two calls
+    var adambiroEu = eu.adambiro,//eu&adambiro are two calls
     //to save it in one var we save 6 calls this is massive save in a loop
-    var clock = new adambiroEu.AlarmClock('clock');
-    var clock2 = new adambiroEu.TextClock('clock2', -7200000, 'ETC');
-    var clock3 = new adambiroEu.Clock('clock3', -7200000, 'ETC');
-    var d = new Date();
+        clock = new adambiroEu.AlarmClock('clock'),
+        clock2 = new adambiroEu.TextClock('clock2', -7200000, 'ETC'),
+        clock3 = new adambiroEu.Clock('clock3', -7200000, 'ETC'),
+        d = new Date();
 }
 
 
@@ -40,10 +41,11 @@ Date.addToInterval = function (date) {
  * Update dates
  */
 Date.updateDates = function () {
-    var aDates = this.__aDates;
-    var dateObj; // Date Object or Function
+    var aDates = this.__aDates,
+        dateObj,
+        i = 0; // Date Object or Function
     //improve performance
-    for (var i = 0; i < aDates.length; i++) {
+    for (; i < aDates.length; i++) {
         dateObj = aDates[i];
         if (dateObj instanceof Date) {
             dateObj.updateSeconds();
@@ -89,8 +91,8 @@ eu.adambiro = eu.adambiro || {};
 eu.adambiro.Clock = function (id, offset, label) {
     offset = offset || 0;
     label = label || 'UTC';
-    var d = new Date();
-    var offset = (offset + d.getTimezoneOffset()) * 60 * 1000;
+    var d = new Date(),
+        offset = (offset + d.getTimezoneOffset()) * 60 * 1000;
     //turn minutes to sec(*60) and millisecond(*1000)
     this.d = new Date(offset + d.getTime());
     this.d.autoClock(true);
@@ -205,8 +207,8 @@ eu.adambiro.AlarmClock = function (id, offset, label) {
 
     //local reference to dom object
     var dom = this.dom = document.getElementById(id);
+    that = this;
     dom.contentEditable = true;
-    var that = this;
 
     dom.addEventListener('focus', function () {
         this.innerHTML = this.innerHTML.slice(0, this.innerHTML.lastIndexOf(':'));
@@ -215,13 +217,14 @@ eu.adambiro.AlarmClock = function (id, offset, label) {
     });
 
     dom.addEventListener('blur', function () {
-        var a = this.innerHTML.split(':');
-        var almHour = that.almHour = parseInt(a[0]);
-        var almMinutes = that.almMinutes = parseInt(a[1]);
+        var a = this.innerHTML.split(':'),
+            almHour = that.almHour = parseInt(a[0]),
+            almMinutes = that.almMinutes = parseInt(a[1]),
+            event;
         console.log('logged', almHour, almMinutes);
         if ((almHour >= 0 && almHour < 24) &&
             (almMinutes >= 0 && almMinutes < 60)) {
-            var event = new Event('restart_tick');
+            event = new Event('restart_tick');
             this.dispatchEvent(event);//dispatch event
         }
         that.tick(true);
@@ -245,10 +248,10 @@ eu.adambiro.AlarmClock.prototype = createObject(eu.adambiro.Clock.prototype, eu.
  * @returns {*}
  */
 eu.adambiro.AlarmClock.prototype.formatOutput = function (h, m, s, label) {
-    var output;
+    var output,sound;
 
     if (h == this.almHour && m == this.almMinutes) {
-        var sound = new Audio();
+        sound = new Audio();
         sound.src = '../ringtone/wake_up.mp3';
         output = 'ALARM WAKE UP!';
         sound.play();
