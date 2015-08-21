@@ -15,11 +15,23 @@
     <div id="clock2">00:00:00</div>
     <div id="clock3">00:00:00</div>
     <ul>
-        <li>Try to avoid anonymous functions ...</li>
+        <li class="comment">Try to avoid anonymous functions ...</li>
         <ul>
-            <li>It makes the code really slow</li>
+            <li class="subComment">It makes the code really slow</li>
         </ul>
-        <li></li>
+        <br>
+        <li class="comment">instead of resetting(recreating) a new array in a loop. We should set the length to 0</li>
+        <ul>
+            <li class="subComment">prefer using array.length = 0;
+            <br> we do not have to recreate the array just making it empty the performance will be better</li>
+        </ul>
+        <br>
+        <li class="comment">pre allocating the size of an Array if it is possible!!!</li>
+        <ul>
+            <li class="subComment">if you not set the size of an array than it becomes a 'hot object'(which means it is changing all the time) <br>
+            because JavasScript has to handle the length of it dynamically</li>
+            <li class="subComment">avoid push it is not so fast than set value to a specific place array[3] = 'test'</li>
+        </ul>
     </ul>
 </div>
 </body>

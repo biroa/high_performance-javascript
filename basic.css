@@ -23,3 +23,13 @@ body{
 #clock3{
     font-size: 30px;
 }
+
+.comment{
+    font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: small;
+}
+
+.subComment{
+    font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: smaller;
+}
