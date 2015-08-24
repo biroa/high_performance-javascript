@@ -1,5 +1,5 @@
 // High Performance Javascript
-// version 4.1 - 4.7 using
+// version 5.1 using
 
 function onReady() {
 
