@@ -213,7 +213,6 @@ eu.adambiro.AlarmClock = function (id, offset, label) {
     // until the variable lives!!!
     dom.addEventListener('focus', function () {
         this.innerHTML = this.innerHTML.slice(0, this.innerHTML.lastIndexOf(':'));
-        console.log(this.innerHTML);
         that.tick(false);
     });
 
@@ -222,7 +221,6 @@ eu.adambiro.AlarmClock = function (id, offset, label) {
             almHour = that.almHour = parseInt(a[0]),
             almMinutes = that.almMinutes = parseInt(a[1]),
             event;
-        console.log('logged', almHour, almMinutes);
         if ((almHour >= 0 && almHour < 24) &&
             (almMinutes >= 0 && almMinutes < 60)) {
             event = new Event('restart_tick');
