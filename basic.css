@@ -1,35 +1,35 @@
-body{
+body {
     font-family: 'Orbitron', cursive;
     background-color: black;
 }
 
-#content{
+#content {
     color: white;
     position: fixed;
     top: 50%;
     left: 50%;
     /*CSS3 Solution for the always in the middle*/
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 
-#clock{
+#clock {
     font-size: 100px;
 }
 
-#clock2{
+#clock2 {
     font-size: 40px;
 }
 
-#clock3{
+#clock3 {
     font-size: 30px;
 }
 
-.comment{
+.comment {
     font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: small;
 }
 
-.subComment{
+.subComment {
     font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: smaller;
 }

@@ -248,7 +248,7 @@ eu.adambiro.AlarmClock.prototype = createObject(eu.adambiro.Clock.prototype, eu.
  * @returns {*}
  */
 eu.adambiro.AlarmClock.prototype.formatOutput = function (h, m, s, label) {
-    var output,sound;
+    var output, sound;
     //Using explicit comparison when data types are the same ... this comparison
     // save lot of extra operation because JavaScript do not have to convert data types
     if (h === this.almHour && m === this.almMinutes) {

@@ -248,7 +248,7 @@ eu.adambiro.AlarmClock.prototype = createObject(eu.adambiro.Clock.prototype, eu.
  * @returns {*}
  */
 eu.adambiro.AlarmClock.prototype.formatOutput = function (h, m, s, label) {
-    var output,sound;
+    var output, sound;
 
     if (h == this.almHour && m == this.almMinutes) {
         sound = new Audio();
